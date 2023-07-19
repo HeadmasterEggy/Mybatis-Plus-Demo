@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mybatis</groupId>
-    <artifactId>mybatis_plus_demo</artifactId>
+    <artifactId>mybatis-plus-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>mybatis_plus_demo</name>
     <description>mybatis_plus_demo</description>
