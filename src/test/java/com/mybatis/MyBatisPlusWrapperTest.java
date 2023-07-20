@@ -1,7 +1,9 @@
 package com.mybatis;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.mybatis.mapper.UserMapper;
 import com.mybatis.pojo.User;
 import org.junit.jupiter.api.Test;
@@ -89,6 +91,7 @@ public class MyBatisPlusWrapperTest {
 
     /**
      * 查询用户的用户名、年龄、邮箱信息
+     * SELECT name,age,email FROM t_user WHERE is_deleted=0
      */
     @Test
     public void test06() {
@@ -96,5 +99,85 @@ public class MyBatisPlusWrapperTest {
         queryWrapper.select("name", "age", "email");
         List<Map<String, Object>> maps = userMapper.selectMaps(queryWrapper);
         maps.forEach(System.out::println);
+    }
+
+    /**
+     * 查询id小于等于100的用户信息
+     * SELECT id,name,age,email,is_deleted FROM t_user WHERE is_deleted=0 AND (id IN (select id from t_user where id <= 100))
+     */
+    @Test
+    public void test07(){
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.inSql("id", "select id from t_user where id <= 100");
+        List<User> list = userMapper.selectList(queryWrapper);
+        list.forEach(System.out::println);
+    }
+
+    /**
+     * 将用户名中包含有a并且（年龄大于20或邮箱为null）的用户信息修改
+     * UPDATE t_user SET email=? WHERE is_deleted=0 AND (name LIKE ? AND (age > ? OR email IS NULL))
+     */
+    @Test
+    public void test08(){
+        UpdateWrapper<User> updateWrapper = new UpdateWrapper<>();
+        updateWrapper.like("name","a").and( i -> i.gt("age",20).or().isNull("email")).set("email","joey@qq.com");
+        int result = userMapper.update(null, updateWrapper);
+        System.out.println(result > 0 ? "修改成功！" : "修改失败！");
+        System.out.println("受影响的行数为：" + result);
+    }
+
+    /**
+     * SELECT id,name,age,email,is_deleted FROM t_user WHERE is_deleted=0 AND (name LIKE ? AND age <= ?)
+     */
+    @Test
+     public void test09(){
+         String username = "a";
+         Integer ageBegin = null;
+         Integer ageEnd = 100;
+         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+         if(StringUtils.isNotBlank(username)){
+             //isNotBlank判断某个字符创是否不为空字符串、不为null、不为空白符
+             queryWrapper.like("name", username);
+         }
+         if(ageBegin != null){
+             queryWrapper.ge("age", ageBegin);
+         }
+         if(ageEnd != null){
+             queryWrapper.le("age", ageEnd);
+         }
+         List<User> list = userMapper.selectList(queryWrapper);
+         list.forEach(System.out::println);
+     }
+
+    /**
+     * SELECT id,name,age,email,is_deleted FROM t_user WHERE is_deleted=0 AND (name LIKE ? AND age <= ?)
+     */
+    @Test
+     public void test10(){
+        String username = "a";
+        Integer ageBegin = null;
+        Integer ageEnd = 30;
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like(StringUtils.isNotBlank(username), "name", username)
+            .ge(ageBegin != null, "age", ageBegin)
+            .le(ageEnd != null, "age", ageEnd);
+        List<User> list = userMapper.selectList(queryWrapper);
+        list.forEach(System.out::println);
+    }
+
+    /**
+     * SELECT id,name,age,email,is_deleted FROM t_user WHERE is_deleted=0 AND (name LIKE ? AND age <= ?)
+     */
+    @Test
+    public void test11(){
+        String username = "a";
+        Integer ageBegin = null;
+        Integer ageEnd = 30;
+        LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.like(StringUtils.isNotBlank(username), User::getName, username)
+            .ge(ageBegin != null, User::getAge, ageBegin)
+            .le(ageEnd != null, User::getAge, ageEnd);
+        List<User> list = userMapper.selectList(queryWrapper);
+        list.forEach(System.out::println);
     }
 }
