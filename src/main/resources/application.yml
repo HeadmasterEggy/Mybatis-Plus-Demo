@@ -18,3 +18,5 @@ mybatis-plus:
        table-prefix: t_
        # 设置统一的主键生成
        id-type: auto
+  # 配置类型别名所对应的包
+  type-aliases-package: com.mybatis.pojo
