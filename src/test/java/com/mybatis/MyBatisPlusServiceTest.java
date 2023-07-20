@@ -20,7 +20,7 @@ public class MyBatisPlusServiceTest {
      * SELECT COUNT( * ) AS total FROM user
      */
     @Test
-    public void testGetCount(){
+    public void testGetCount() {
         long count = userService.count();
         System.out.println("总记录数：" + count);
     }
@@ -30,7 +30,7 @@ public class MyBatisPlusServiceTest {
      * INSERT INTO user ( id, name, age ) VALUES ( ?, ?, ? )
      */
     @Test
-    public void testInsertMore(){
+    public void testInsertMore() {
         List<User> list = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
             User user = new User();

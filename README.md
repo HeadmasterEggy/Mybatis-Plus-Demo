@@ -2,7 +2,9 @@
 
 ## 1.简介
 
-[MyBatis-Plus (opens new window)](https://github.com/baomidou/mybatis-plus)（简称 MP）是一个 [MyBatis (opens new window)](https://www.mybatis.org/mybatis-3/)的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。
+[MyBatis-Plus (opens new window)](https://github.com/baomidou/mybatis-plus)（简称
+MP）是一个 [MyBatis (opens new window)](https://www.mybatis.org/mybatis-3/)的增强工具，在 MyBatis
+的基础上只做增强不做改变，为简化开发、提高效率而生。
 
 > 我们的愿景是成为 MyBatis 最好的搭档，就像 [魂斗罗](https://baomidou.com/img/contra.jpg) 中的 1P、2P，基友搭配，效率翻倍。
 
@@ -23,33 +25,24 @@
 - **内置性能分析插件**：可输出 SQL 语句以及其执行时间，建议开发测试时启用该功能，能快速揪出慢查询
 - **内置全局拦截插件**：提供全表 delete 、 update 操作智能分析阻断，也可自定义拦截规则，预防误操作
 
-
-
 ## 3.支持数据库
 
 > 任何能使用 `MyBatis` 进行 CRUD, 并且支持标准 SQL 的数据库，具体支持情况如下，如果不在下列表查看分页部分教程 PR 您的支持。
 >
 
-- MySQL，Oracle，DB2，H2，HSQL，SQLite，PostgreSQL，SQLServer，Phoenix，Gauss ，ClickHouse，Sybase，OceanBase，Firebird，Cubrid，Goldilocks，csiidb
+- MySQL，Oracle，DB2，H2，HSQL，SQLite，PostgreSQL，SQLServer，Phoenix，Gauss
+  ，ClickHouse，Sybase，OceanBase，Firebird，Cubrid，Goldilocks，csiidb
 - 达梦数据库，虚谷数据库，人大金仓数据库，南大通用(华库)数据库，南大通用数据库，神通数据库，瀚高数据库
 
-
-
-##  4.框架结构
+## 4.框架结构
 
 <img src="https://baomidou.com/img/mybatis-plus-framework.jpg" alt="framework" style="zoom:50%;" />
-
-
 
 ## 5.官方地址
 
 > **官方网站：**https://baomidou.com/
 >
 > **官方文档：**https://baomidou.com/pages/24112f/
-
-
-
-
 
 # 二、入门案例
 
@@ -62,8 +55,6 @@
 - **Navicat：Navicat Premium 15**
 - **Spring Boot：2.6.7**
 - **MyBatis-Plus：3.5.1**
-
-
 
 ## 2.建库建表
 
@@ -92,8 +83,6 @@
   (5, 'Billie', 24, 'test5@baomidou.com');
   ```
 
-  
-
 ## 3.创建工程
 
 - **使用`Spring Initializer`快速初始化一个 Spring Boot 工程**
@@ -119,8 +108,6 @@
 - **安装`Lombok`插件**
 
   <img src="https://image-bed-vz.oss-cn-hangzhou.aliyuncs.com/MyBatis-Plus/image-20220519143257305.png" alt="image-20220519143257305" style="zoom:80%;" />
-
-
 
 ## 4.配置编码
 
@@ -179,8 +166,6 @@
   public interface UserMapper extends BaseMapper<User> {}
   ```
 
-
-
 ## 5.测试查询
 
 - **编写一个测试类`MyBatisPlusTest.java`**
@@ -206,8 +191,6 @@
 - **控制台打印查询结果**
 
   ![image-20220519150454211](https://image-bed-vz.oss-cn-hangzhou.aliyuncs.com/MyBatis-Plus/image-20220519150454211.png)
-
-
 
 # 三、增删改查
 
@@ -284,9 +267,6 @@ MyBatis-Plus中的基本CRUD在内置的BaseMapper中都已得到了实现，因
   Integer selectCount(@Param(Constants.WRAPPER) Wrapper<T> queryWrapper);
   ```
 
-
-
-
 ## 2.调用Mapper层实现CRUD
 
 ### 2.1	插入
@@ -316,8 +296,6 @@ public void testInsert(){
 }
 ```
 
-
-
 ### 2.2	删除
 
 ---
@@ -338,8 +316,6 @@ public void testDeleteById(){
 }
 ```
 
-
-
 #### b、根据ID批量删除数据
 
 > **调用方法：int deleteBatchIds(@Param(Constants.COLLECTION) Collection<? extends Serializable> idList);**
@@ -356,8 +332,6 @@ public void testDeleteBatchIds(){
     System.out.println("受影响的行数为：" + result);
 }
 ```
-
-
 
 #### c、根据Map条件删除数据
 
@@ -379,8 +353,6 @@ public void testDeleteByMap(){
     System.out.println("受影响的行数为：" + result);
 }
 ```
-
-
 
 ### 2.3	修改
 
@@ -404,8 +376,6 @@ public void testUpdateById(){
 }
 ```
 
-
-
 ### 2.4	查询
 
 ---
@@ -425,8 +395,6 @@ public void testSelectById(){
 }
 ```
 
-
-
 #### b、根据多个ID查询多个用户信息
 
 > **调用方法：List<T> selectBatchIds(@Param(Constants.COLLECTION) Collection<? extends Serializable> idList);**
@@ -443,10 +411,6 @@ public void testSelectBatchIds(){
     users.forEach(System.out::println);
 }
 ```
-
-
-
-
 
 #### c、根据Map条件查询用户信息
 
@@ -466,8 +430,6 @@ public void testSelectByMap(){
 }
 ```
 
-
-
 #### d、查询所有用户信息
 
 > **调用方法：List<T> selectList(@Param(Constants.WRAPPER) Wrapper<T> queryWrapper);**
@@ -483,20 +445,20 @@ void testSelectList(){
 }
 ```
 
-
-
 ## 3.通用Service
 
 > 说明:
 >
-> - 通用 Service CRUD 封装`IService`接口，进一步封装 CRUD 采用 `get 查询单行` `remove 删除` `list 查询集合` `page 分页` 前缀命名方式区分 `Mapper` 层避免混淆，
+> - 通用 Service CRUD 封装`IService`接口，进一步封装 CRUD 采用 `get 查询单行` `remove 删除` `list 查询集合` `page 分页`
+    前缀命名方式区分 `Mapper` 层避免混淆，
 > - 泛型 `T` 为任意实体对象
 > - 建议如果存在自定义通用 Service 方法的可能，请创建自己的 `IBaseService` 继承 `Mybatis-Plus` 提供的基类
 > - 对象 `Wrapper` 为 条件构造器
 
 MyBatis-Plus中有一个接口 **`IService`**和其实现类 **`ServiceImpl`**，封装了常见的业务层逻辑，详情查看源码IService和ServiceImpl
 
-因此我们在使用的时候仅需在自己定义的**`Service`**接口中继承**`IService`**接口，在自己的实现类中实现自己的Service并继承**`ServiceImpl`**即可
+因此我们在使用的时候仅需在自己定义的**`Service`**接口中继承**`IService`**接口，在自己的实现类中实现自己的Service并继承
+**`ServiceImpl`**即可
 
 ---
 
@@ -607,8 +569,6 @@ MyBatis-Plus中有一个接口 **`IService`**和其实现类 **`ServiceImpl`**�
   <V> V getObj(Wrapper<T> queryWrapper, Function<? super Object, V> mapper);
   ```
 
-  
-
 ## 4.调用Service层操作数据
 
 > 我们在自己的Service接口中通过继承MyBatis-Plus提供的IService接口，不仅可以获得其提供的CRUD方法，而且还可以使用自身定义的方法。
@@ -666,19 +626,14 @@ MyBatis-Plus中有一个接口 **`IService`**和其实现类 **`ServiceImpl`**�
   }
   ```
 
-
-
 # 四、常用注解
 
 > MyBatis-Plus提供的注解可以帮我们解决一些数据库与实体之间相互映射的问题。
 
-
-
 ## 1.@TableName
 
-> 经过以上的测试，在使用MyBatis-Plus实现基本的CRUD时，我们并没有指定要操作的表，只是在Mapper接口继承BaseMapper时，设置了泛型User，而操作的表为user表，由此得出结论，MyBatis-Plus在确定操作的表时，由BaseMapper的泛型决定，即实体类型决定，且默认操作的表名和实体类型的类名一致。
-
-
+>
+经过以上的测试，在使用MyBatis-Plus实现基本的CRUD时，我们并没有指定要操作的表，只是在Mapper接口继承BaseMapper时，设置了泛型User，而操作的表为user表，由此得出结论，MyBatis-Plus在确定操作的表时，由BaseMapper的泛型决定，即实体类型决定，且默认操作的表名和实体类型的类名一致。
 
 ### 1.1	引出问题
 
@@ -690,17 +645,14 @@ MyBatis-Plus中有一个接口 **`IService`**和其实现类 **`ServiceImpl`**�
 
   ![image-20220520093844842](https://image-bed-vz.oss-cn-hangzhou.aliyuncs.com/MyBatis-Plus/image-20220520093844842.png)
 
-- 程序抛出异常，**Table 'mybatis_plus.user' doesn't exist**，因为现在的表名为`t_user`，而默认操作的表名和实体类型的类名一致，即`user`表
+- 程序抛出异常，**Table 'mybatis_plus.user' doesn't exist**，因为现在的表名为`t_user`
+  ，而默认操作的表名和实体类型的类名一致，即`user`表
 
   ![image-20220520094126411](https://image-bed-vz.oss-cn-hangzhou.aliyuncs.com/MyBatis-Plus/image-20220520094126411.png)
-
-
 
 ### 1.2	解决问题
 
 ---
-
-
 
 #### a、使用注解解决问题
 
@@ -717,11 +669,11 @@ public class User {
 }
 ```
 
-
-
 #### b、使用全局配置解决问题
 
-> **在开发的过程中，我们经常遇到以上的问题，即实体类所对应的表都有固定的前缀，例如 `t_` 或 `tbl_` 此时，可以使用MyBatis-Plus提供的全局配置，为实体类所对应的表名设置默认的前缀，那么就不需要在每个实体类上通过@TableName标识实体类对应的表**
+> **在开发的过程中，我们经常遇到以上的问题，即实体类所对应的表都有固定的前缀，例如 `t_` 或 `tbl_`
+> 此时，可以使用MyBatis-Plus提供的全局配置，为实体类所对应的表名设置默认的前缀，那么就不需要在每个实体类上通过@TableName标识实体类对应的表
+**
 
 ```yml
 mybatis-plus:
@@ -731,15 +683,9 @@ mybatis-plus:
       table-prefix: t_
 ```
 
-
-
-
-
 ## 2.@TableId
 
 > **经过以上的测试，MyBatis-Plus在实现CRUD时，会默认将id作为主键列，并在插入数据时，默认基于雪花算法的策略生成id**
-
-
 
 ### 2.1	引出问题
 
@@ -756,8 +702,6 @@ mybatis-plus:
 - 程序抛出异常，**Field 'uid' doesn't have a default value**，说明MyBatis-Plus没有将`uid`作为主键赋值
 
   ![image-20220520101317761](https://image-bed-vz.oss-cn-hangzhou.aliyuncs.com/MyBatis-Plus/image-20220520101317761.png)
-
-
 
 ### 2.2	解决问题
 
@@ -776,19 +720,18 @@ public class User {
 }
 ```
 
-
-
-### 2.3	@TableId的value属性
+### 2.3 @TableId的value属性
 
 ---
 
-> 若实体类中主键对应的属性为id，而表中表示主键的字段为uid，此时若只在属性id上添加注解@TableId，则抛出异常**Unknown column 'id' in 'field list'**，即MyBatis-Plus仍然会将id作为表的主键操作，而表中表示主键的是字段uid此时需要通过@TableId注解的value属性，指定表中的主键字段，`@TableId("uid")`或`@TableId(value="uid")`
+> 若实体类中主键对应的属性为id，而表中表示主键的字段为uid，此时若只在属性id上添加注解@TableId，则抛出异常**Unknown column '
+id' in 'field list'**
+> ，即MyBatis-Plus仍然会将id作为表的主键操作，而表中表示主键的是字段uid此时需要通过@TableId注解的value属性，指定表中的主键字段，`@TableId("uid")`
+> 或`@TableId(value="uid")`
 
 ![image-20220520103030977](https://image-bed-vz.oss-cn-hangzhou.aliyuncs.com/MyBatis-Plus/image-20220520103030977.png)
 
-
-
-### 2.4	@TableId的type属性
+### 2.4 @TableId的type属性
 
 ---
 
@@ -796,12 +739,10 @@ public class User {
 
 **常用的主键策略：**
 
-|            值            |                             描述                             |
-| :----------------------: | :----------------------------------------------------------: |
-| IdType.ASSIGN_ID（默认） |   基于雪花算法的策略生成数据id，与数据库id是否设置自增无关   |
-|       IdType.AUTO        | 使用数据库的自增策略，注意，该类型请确保数据库设置了id自增， |
-
-
+|          值           |               描述                |
+|:--------------------:|:-------------------------------:|
+| IdType.ASSIGN_ID（默认） | 基于雪花算法的策略生成数据id，与数据库id是否设置自增无关  |
+|     IdType.AUTO      | 使用数据库的自增策略，注意，该类型请确保数据库设置了id自增， |
 
 **配置全局主键策略：**
 
@@ -819,15 +760,11 @@ mybatis-plus:
       table-prefix: t_
 ```
 
-
-
 ## 3.@TbaleField
 
 > 经过以上的测试，我们可以发现，MyBatis-Plus在执行SQL语句时，要保证实体类中的属性名和表中的字段名一致
 >
 > 如果实体类中的属性名和字段名不一致的情况，会出现什么问题呢？
-
-
 
 ### 3.1	情况一
 
@@ -840,8 +777,6 @@ mybatis-plus:
 此时MyBatis-Plus会自动将下划线命名风格转化为驼峰命名风格
 
 相当于在MyBatis中配置
-
-
 
 ### 3.2	情况二
 
@@ -864,11 +799,7 @@ public class User {
 }
 ```
 
-
-
 ## 4.@TableLogic
-
-
 
 ### 4.1	逻辑删除
 
@@ -879,8 +810,6 @@ public class User {
 > 逻辑删除：假删除，将对应数据中代表是否被删除字段的状态修改为“被删除状态”，之后在数据库中仍旧能看到此条数据记录
 >
 > 使用场景：可以进行数据恢复
-
-
 
 ### 4.2	实现逻辑删除
 
@@ -910,10 +839,6 @@ public class User {
 
   ![image-20220520140036445](https://image-bed-vz.oss-cn-hangzhou.aliyuncs.com/MyBatis-Plus/image-20220520140036445.png)
 
-
-
-
-
 # 五、条件构造器
 
 ## 1.Wrapper介绍
@@ -922,25 +847,24 @@ public class User {
 
 - `Wrapper` ： 条件构造抽象类，最顶端父类
 
-  - `AbstractWrapper `： 用于查询条件封装，生成 sql 的 where 条件
+    - `AbstractWrapper `： 用于查询条件封装，生成 sql 的 where 条件
 
-    - `QueryWrapper `： 查询条件封装
+        - `QueryWrapper `： 查询条件封装
 
-    - `UpdateWrapper `： Update 条件封装
+        - `UpdateWrapper `： Update 条件封装
 
-    - `AbstractLambdaWrapper `： 使用Lambda 语法
+        - `AbstractLambdaWrapper `： 使用Lambda 语法
 
-      - `LambdaQueryWrapper `：用于Lambda语法使用的查询Wrapper
+            - `LambdaQueryWrapper `：用于Lambda语法使用的查询Wrapper
 
-      - `LambdaUpdateWrapper `： Lambda 更新封装Wrapper
-
-
+            - `LambdaUpdateWrapper `： Lambda 更新封装Wrapper
 
 ## 2.QueryWrapper
 
 - **组装查询条件**
 
-  > **执行SQL：**SELECT uid AS id,username AS name,age,email,is_deleted FROM t_user WHERE is_deleted=0 AND (username LIKE ? AND age BETWEEN ? AND ? AND email IS NOT NULL)
+  > **执行SQL：**SELECT uid AS id,username AS name,age,email,is_deleted FROM t_user WHERE is_deleted=0 AND (username
+  LIKE ? AND age BETWEEN ? AND ? AND email IS NOT NULL)
 
   ```java
   public void test01(){
@@ -954,7 +878,8 @@ public class User {
 
 - **组装排序条件**
 
-  > **执行SQL：**SELECT uid AS id,username AS name,age,email,is_deleted FROM t_user WHERE is_deleted=0 ORDER BY age DESC,id ASC
+  > **执行SQL：**SELECT uid AS id,username AS name,age,email,is_deleted FROM t_user WHERE is_deleted=0 ORDER BY age
+  DESC,id ASC
 
   ```java
   public void test02(){
@@ -983,7 +908,8 @@ public class User {
 
 - **条件的优先级**
 
-  > **执行SQL：**UPDATE t_user SET user_name=?, email=? WHERE is_deleted=0 AND (age > ? AND user_name LIKE ? OR email IS NULL)
+  > **执行SQL：**UPDATE t_user SET user_name=?, email=? WHERE is_deleted=0 AND (age > ? AND user_name LIKE ? OR email IS
+  NULL)
 
   ```java
   public void test04(){
@@ -1000,7 +926,8 @@ public class User {
   }
   ```
 
-  > **执行SQL：**UPDATE t_user SET username=?, email=? WHERE is_deleted=0 AND (username LIKE ? AND (age > ? OR email IS NULL))
+  > **执行SQL：**UPDATE t_user SET username=?, email=? WHERE is_deleted=0 AND (username LIKE ? AND (age > ? OR email IS
+  NULL))
 
   ```java
   public void test05(){
@@ -1033,7 +960,8 @@ public class User {
 
 - **实现子查询**
 
-  > **执行SQL：**SELECT uid AS id,user_name AS name,age,email,is_deleted FROM t_user WHERE is_deleted=0 AND (uid IN (select uid from t_user where uid <= 100))
+  > **执行SQL：**SELECT uid AS id,user_name AS name,age,email,is_deleted FROM t_user WHERE is_deleted=0 AND (uid IN (
+  select uid from t_user where uid <= 100))
 
   ```java
   public void test07(){
@@ -1044,8 +972,6 @@ public class User {
       list.forEach(System.out::println);
   }
   ```
-
-  
 
 ## 3.UpdateWrapper
 
@@ -1062,17 +988,14 @@ public void test08(){
 }
 ```
 
-
-
 ## 4.condition
 
 > 在真正开发的过程中，组装条件是常见的功能，而这些条件数据来源于用户输入，是可选的，因此我们在组装这些条件时，必须先判断用户是否选择了这些条件，若选择则需要组装该条件，若没有选择则一定不能组装，以免影响SQL执行的结果
 
-
-
 - **思路一**
 
-  > **执行SQL：**SELECT uid AS id,user_name AS name,age,email,is_deleted FROM t_user WHERE is_deleted=0 AND (user_name LIKE ? AND age <= ?)
+  > **执行SQL：**SELECT uid AS id,user_name AS name,age,email,is_deleted FROM t_user WHERE is_deleted=0 AND (user_name
+  LIKE ? AND age <= ?)
 
   ```java
    public void test09(){
@@ -1113,8 +1036,6 @@ public void test08(){
   }
   ```
 
-  
-
 ## 5.LambdaQueryWrapper
 
 > 功能等同于QueryWrapper，提供了Lambda表达式的语法可以避免填错列名。
@@ -1133,8 +1054,6 @@ public void test11(){
 }
 ```
 
-
-
 ## 6.LambdaUpdateWrapper
 
 > 功能等同于UpdateWrapper，提供了Lambda表达式的语法可以避免填错列名。
@@ -1150,8 +1069,6 @@ public void test12(){
     System.out.println("result："+result);
 }
 ```
-
-
 
 # 六、常用插件
 
@@ -1186,8 +1103,6 @@ public void test12(){
       users.forEach(System.out::println);
   }
   ```
-
-  
 
 ## 2.自定义分页
 
@@ -1224,8 +1139,6 @@ public void test12(){
   }
   ```
 
-
-
 ## 3.乐观锁
 
 > **作用：当要更新一条记录的时候，希望这条记录没有被别人更新**
@@ -1237,17 +1150,14 @@ public void test12(){
 - 执行更新时， set version = newVersion where version = oldVersion
 - 如果 version 不对，就更新失败
 
-
-
 ### 3.1	场景
 
 ---
 
 - 一件商品，成本价是80元，售价是100元。老板先是通知小李，说你去把商品价格增加50元。小李正在玩游戏，耽搁了一个小时。正好一个小时后，老板觉得商品价格增加到150元，价格太高，可能会影响销量。又通知小王，你把商品价格降低30元。
-- 此时，小李和小王同时操作商品后台系统。小李操作的时候，系统先取出商品价格100元；小王也在操作，取出的商品价格也是100元。小李将价格加了50元，并将100+50=150元存入了数据库；小王将商品减了30元，并将100-30=70元存入了数据库。是的，如果没有锁，小李的操作就完全被小王的覆盖了。
+-
+此时，小李和小王同时操作商品后台系统。小李操作的时候，系统先取出商品价格100元；小王也在操作，取出的商品价格也是100元。小李将价格加了50元，并将100+50=150元存入了数据库；小王将商品减了30元，并将100-30=70元存入了数据库。是的，如果没有锁，小李的操作就完全被小王的覆盖了。
 - 现在商品价格是70元，比成本价低10元。几分钟后，这个商品很快出售了1千多件商品，老板亏1万多。
-
-
 
 ### 3.2	乐观锁与悲观锁
 
@@ -1255,8 +1165,6 @@ public void test12(){
 
 - 上面的故事，如果是乐观锁，小王保存价格前，会检查下价格是否被人修改过了。如果被修改过了，则重新取出的被修改后的价格，150元，这样他会将120元存入数据库。
 - 如果是悲观锁，小李取出数据后，小王只能等小李操作完之后，才能对价格进行操作，也会保证最终的价格是120元。
-
-
 
 ### 3.3	模拟修改冲突
 
@@ -1329,8 +1237,6 @@ public void test12(){
 
   ![image-20220521225803162](https://image-bed-vz.oss-cn-hangzhou.aliyuncs.com/MyBatis-Plus/image-20220521225803162.png)
 
-
-
 ### 3.4	乐观锁解决问题
 
 ---
@@ -1366,27 +1272,27 @@ public void test12(){
 
   > 小李查询商品信息：
   >
-  > ​	SELECT id,name,price,version FROM t_product WHERE id=?
+  >  SELECT id,name,price,version FROM t_product WHERE id=?
   >
   > 小王查询商品信息：
   >
-  > ​	SELECT id,name,price,version FROM t_product WHERE id=?
+  >  SELECT id,name,price,version FROM t_product WHERE id=?
   >
   > 小李修改商品价格，自动将version+1
   >
-  > ​	UPDATE t_product SET name=?, price=?, version=? WHERE id=? AND version=?
+  >  UPDATE t_product SET name=?, price=?, version=? WHERE id=? AND version=?
   >
-  > ​	Parameters: 外星人笔记本(String), 150(Integer), 1(Integer), 1(Long), 0(Integer)
+  >  Parameters: 外星人笔记本(String), 150(Integer), 1(Integer), 1(Long), 0(Integer)
   >
   > 小王修改商品价格，此时version已更新，条件不成立，修改失败
   >
-  > ​	UPDATE t_product SET name=?, price=?, version=? WHERE id=? AND version=?
+  >  UPDATE t_product SET name=?, price=?, version=? WHERE id=? AND version=?
   >
-  > ​	Parameters: 外星人笔记本(String), 70(Integer), 1(Integer), 1(Long), 0(Integer)
+  >  Parameters: 外星人笔记本(String), 70(Integer), 1(Integer), 1(Long), 0(Integer)
   >
   > 最终，小王修改失败，查询价格：150
   >
-  > ​	SELECT id,name,price,version FROM t_product WHERE id=?
+  >  SELECT id,name,price,version FROM t_product WHERE id=?
 
 - **优化执行流程**
 
@@ -1422,8 +1328,6 @@ public void test12(){
   ```
 
   ![image-20220521230448577](https://image-bed-vz.oss-cn-hangzhou.aliyuncs.com/MyBatis-Plus/image-20220521230448577.png)
-
-  
 
 # 七、通用枚举
 
@@ -1506,21 +1410,18 @@ public void test12(){
   }
   ```
 
-  
-
 # 八、多数据源
 
 > 适用于多种场景：纯粹多库、 读写分离、 一主多从、 混合模式等
 
 场景说明：
 
-我们创建两个库，分别为：`mybatis_plus`（以前的库不动）与`mybatis_plus_1`（新建），将mybatis_plus库的`product`表移动到mybatis_plus_1库，这样每个库一张表，通过一个测试用例分别获取用户数据与商品数据，如果获取到说明多库模拟成功
-
-
+我们创建两个库，分别为：`mybatis_plus`（以前的库不动）与`mybatis_plus_1`（新建），将mybatis_plus库的`product`
+表移动到mybatis_plus_1库，这样每个库一张表，通过一个测试用例分别获取用户数据与商品数据，如果获取到说明多库模拟成功
 
 ## 1.创建数据库及表
 
-- **创建数据库`mybatis_plus_1`和表`product**
+- **创建数据库`mybatis_plus_1`和表`product`**
 
   ```sql
   CREATE DATABASE `mybatis_plus_1` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
@@ -1540,14 +1441,12 @@ public void test12(){
   INSERT INTO product (id, NAME, price) VALUES (1, '外星人笔记本', 100);
   ```
 
-- **删除`mybatis_plus`库中的`product`表** 
+- **删除`mybatis_plus`库中的`product`表**
 
   ```sql
   use mybatis_plus; 
   DROP TABLE IF EXISTS product;
   ```
-
-
 
 ## 2.新建工程引入依赖
 
@@ -1568,8 +1467,6 @@ public void test12(){
     <version>3.5.0</version>
 </dependency>
 ```
-
-
 
 ## 3.编写配置文件
 
@@ -1594,8 +1491,6 @@ spring:
           username: root
           password: 132537
 ```
-
-
 
 ## 4.创建实体类
 
@@ -1622,8 +1517,6 @@ spring:
       private Integer version;
   }
   ```
-
-
 
 ## 5.创建Mapper及Service
 
@@ -1659,8 +1552,6 @@ spring:
   ...
   ```
 
-  
-
 ## 6.编写测试方法
 
 > **记得在启动类中添加注解`@MapperScan()`**
@@ -1686,8 +1577,6 @@ class TestDatasourceApplicationTests {
 
 ![image-20220522113049945](https://image-bed-vz.oss-cn-hangzhou.aliyuncs.com/MyBatis-Plus/image-20220522113049945.png)
 
-
-
 # 九、MyBatisX插件
 
 > MyBatis-Plus为我们提供了强大的mapper和service模板，能够大大的提高开发效率。
@@ -1696,15 +1585,11 @@ class TestDatasourceApplicationTests {
 >
 > MyBatisX一款基于 IDEA 的快速开发插件，为效率而生。
 
-
-
 ## 1.安装MyBatisX插件
 
 > **打开IDEA，File-> Setteings->Plugins->MyBatisX，搜索栏搜索MyBatisX然后安装。**
 
 ![image-20220522115718361](https://image-bed-vz.oss-cn-hangzhou.aliyuncs.com/MyBatis-Plus/image-20220522115718361.png)
-
-
 
 ## 2.快速生成代码
 
@@ -1760,8 +1645,6 @@ class TestDatasourceApplicationTests {
 
   ![image-20220522122612334](https://image-bed-vz.oss-cn-hangzhou.aliyuncs.com/MyBatis-Plus/image-20220522122612334.png)
 
-
-
 ## 3.快速生成CRUD
 
 > MyBaitsX可以根据我们在Mapper接口中输入的方法名快速帮我们生成对应的sql语句
@@ -1770,8 +1653,6 @@ class TestDatasourceApplicationTests {
 
 ![image-20220522123202310](https://image-bed-vz.oss-cn-hangzhou.aliyuncs.com/MyBatis-Plus/image-20220522123202310.png)
 
-
-
 # 十、致谢
 
 感谢尚硅谷杨博超老师：https://www.bilibili.com/video/BV12R4y157Be?p=1
@@ -1779,3 +1660,36 @@ class TestDatasourceApplicationTests {
 感谢MyBatis-Plus作者苞米豆：https://baomidou.com/
 
 感谢自己又坚持学习了一门课程：https://www.oz6.cn/
+
+```java
+public class FastAutoGeneratorTest {
+  FastAutoGenerator.create("url", "username", "password")
+      .globalConfig(builder -> {
+          builder.author("baomidou") // 设置作者
+              .enableSwagger() // 开启 swagger 模式
+              .fileOverride() // 覆盖已生成文件
+              .outputDir("D://"); // 指定输出目录
+      })
+      .dataSourceConfig(builder -> builder.typeConvertHandler((globalConfig, typeRegistry, metaInfo) -> {
+          int typeCode = metaInfo.getJdbcType().TYPE_CODE;
+          if (typeCode == Types.SMALLINT) {
+              // 自定义类型转换
+              return DbColumnType.INTEGER;
+          }
+          return typeRegistry.getColumnType(metaInfo);
+
+      }))
+      .packageConfig(builder -> {
+          builder.parent("com.baomidou.mybatisplus.samples.generator") // 设置父包名
+              .moduleName("system") // 设置父包模块名
+              .pathInfo(Collections.singletonMap(OutputFile.xml, "D://")); // 设置mapperXml生成路径
+      })
+      .strategyConfig(builder -> {
+          builder.addInclude("t_simple") // 设置需要生成的表名
+              .addTablePrefix("t_", "c_"); // 设置过滤表前缀
+      })
+      .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
+      .execute();
+}
+```
+
